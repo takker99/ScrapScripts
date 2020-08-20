@@ -2,7 +2,7 @@
   "name": "scrap-script",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:daiz713/ScrapScripts.git",
+  "repository": "git@github.com:daiiz/ScrapScripts.git",
   "author": "daiiz <da.iz.mg@gmail.com>",
   "license": "MIT",
   "scripts": {
