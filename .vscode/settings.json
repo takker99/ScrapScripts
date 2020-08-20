@@ -4,5 +4,13 @@
         "Scrapbox",
         "ctrlv",
         "daiiz"
+    ],
+    "cSpell.ignorePaths": [
+        "**/package-lock.json",
+        "**/yarn.lock",
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/objects/**",
+        ".vscode"
     ]
 }
