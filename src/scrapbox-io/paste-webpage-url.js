@@ -31,7 +31,7 @@ const execPasteFirefox = async () => {
 
   // clipboardが保持する内容を流し込んで値を取得
   let rawText
-  const onPaste = event => {rawText = event.clipboardData.getData('text/plain')}
+  const onPaste = event => { rawText = event.clipboardData.getData('text/plain') }
   textarea.value = ''
   textarea.focus()
   document.addEventListener('paste', onPaste, false)
@@ -67,7 +67,7 @@ const insertTextToScrapboxCursor = text => {
   }
 }
 
-export function enable() {
+export function enable () {
   let c = 0
 
   $(window).on('keydown', event => {
@@ -93,7 +93,7 @@ export function enable() {
     }
   })
 
-  $(window).on('keyup', () => {c = 0})
+  $(window).on('keyup', () => { c = 0 })
 
   window.app.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const {command, externalLink} = request
