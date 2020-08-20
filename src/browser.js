@@ -1,8 +1,8 @@
 
-exports.isChrome = () => {
+export function isChrome() {
   return /Chrome/.test(navigator.userAgent)
 }
 
-exports.isFirefox = () => {
+export function isFirefox() {
   return /Firefox/.test(navigator.userAgent)
 }

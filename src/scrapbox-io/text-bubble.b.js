@@ -1,5 +1,5 @@
-const $ = require('jquery')
-const daiizScrapboxManage = require('./manage')
+import $, { ajax } from 'jquery'
+import daiizScrapboxManage from './manage'
 const {installed, detectProject} = daiizScrapboxManage
 
 var BRACKET_OPEN = '['
@@ -13,7 +13,7 @@ var openCodeBlock = false
 var PROJECT_NAME = null
 var EMPTY_LINKS = []
 
-exports.$getTextBubble = function () {
+export function $getTextBubble () {
   var $textBubble = $(`<div class="daiiz-text-bubble related-page-list daiiz-card daiiz-card-root"></div>`)
   return $textBubble
 }
@@ -121,7 +121,8 @@ var spans = function (txt) {
 var getScrapboxUrl = url => {
   return 'https://scrapbox.io' + url
 }
-exports.getScrapboxUrl = getScrapboxUrl
+const _getScrapboxUrl = getScrapboxUrl
+export { _getScrapboxUrl as getScrapboxUrl }
 
 var makePageLink = (body, tagOpen, tagClose) => {
   var link = {tagOpen: [], tagClose: [], body: ''}
@@ -365,7 +366,7 @@ var previewPageText = function ($root, $bubble, title, rowHash) {
   var externalProject = false
   var extraClassName = ''
   if (PROJECT_NAME !== detectProject()) externalProject = true
-  $.ajax({
+  ajax({
     type: 'GET',
     contentType: 'application/json',
     url: `https://scrapbox.io/api/pages/${PROJECT_NAME}/${title}`
@@ -398,7 +399,7 @@ var previewPageText = function ($root, $bubble, title, rowHash) {
   })
 }
 
-exports.$getRefTextBody = function (title, $root, $bubble, projectName) {
+export function $getRefTextBody (title, $root, $bubble, projectName) {
   title = title.replace(/^\#/, '')
   var t = title.match(/\#.{24,32}$/)
   var lineHash = null
@@ -422,7 +423,7 @@ exports.$getRefTextBody = function (title, $root, $bubble, projectName) {
   previewPageText($root, $bubble, title, lineHash)
 }
 
-exports.enable = function () {
+export function enable () {
   const $appRoot = $('#app-container')
   const self = this
   let timer = null

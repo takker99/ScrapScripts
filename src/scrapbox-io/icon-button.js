@@ -1,9 +1,9 @@
-const $ = require('jquery')
-const daiizScrapboxManage = require('./manage')
-const installed = daiizScrapboxManage.installed
-const detectProject = daiizScrapboxManage.detectProject
+import $ from 'jquery'
+import { installed as _installed, detectProject as _detectProject } from './manage'
+const installed = _installed
+const detectProject = _detectProject
 
-exports.enable = () => {
+export function enable() {
   var $appRoot = $('#app-container')
 
   $appRoot.on('click', 'img.icon', e => {
