@@ -1,6 +1,6 @@
 // Gyazo
-var $ = require('jquery')
-var textBubble = require('../scrapbox-io/text-bubble.b.js')
+import $ from 'jquery'
+import { getScrapboxUrl, $getTextBubble, $getRefTextBody } from '../scrapbox-io/text-bubble.b.js'
 // var daiizGyazoManage = require('./manage')
 
 var daiizGyazoDescLink = function ($appRoot, projectName) {
@@ -15,7 +15,7 @@ var daiizGyazoDescLink = function ($appRoot, projectName) {
       var keyword = keywords[i].replace('[', '').replace(']', '')
       var projectPage = `/${projectName}/${keyword}`
       desc = desc.replace(keywords[i], `<a class="page-link"
-          href="${textBubble.getScrapboxUrl(projectPage)}">${keyword}</a>`)
+          href="${getScrapboxUrl(projectPage)}">${keyword}</a>`)
     }
     $t.html(desc)
   })
@@ -28,7 +28,7 @@ var daiizGyazoTextBubbleInit = function ($appRoot, targetSelector, projectName) 
     $a.attr('title', '')
     var $parentBubble = $(e.target).closest('div.daiiz-text-bubble')
 
-    var $bubble = textBubble.$getTextBubble()
+    var $bubble = $getTextBubble()
     var rect = $a[0].getBoundingClientRect()
     $bubble.css({
       'max-width': $('.container-editbox')[0].offsetWidth - $a[0].offsetLeft,
@@ -50,7 +50,7 @@ var daiizGyazoTextBubbleInit = function ($appRoot, targetSelector, projectName) 
 
     timer = window.setTimeout(function () {
       if ($parentBubble.length > 0) projectName = $parentBubble.attr('data-project')
-      textBubble.$getRefTextBody(tag.trim(), $appRoot, $bubble, projectName)
+      $getRefTextBody(tag.trim(), $appRoot, $bubble, projectName)
     }, 650)
   })
 
@@ -77,7 +77,7 @@ var daiizGyazoTextBubbleInit = function ($appRoot, targetSelector, projectName) 
   })
 }
 
-exports.enable = (projectName) => {
+export function enable(projectName) {
   var $appRoot = $('body')
   daiizGyazoTextBubbleInit($appRoot, 'a.hashtag', projectName)
   daiizGyazoTextBubbleInit($appRoot, 'a.page-link', projectName)

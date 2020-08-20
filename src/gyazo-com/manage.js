@@ -2,11 +2,11 @@
 let ROOT_PROJECT_NAME = null
 const DAIIZ_GYAZO_TEXT_BUBBLE = 'daiiz-gyazo-text-bubble'
 
-exports.detectProject = function () {
+export function detectProject () {
   return ROOT_PROJECT_NAME
 }
 
-exports.install = () => {
+export function install() {
   return new Promise(resolve => {
     window.app.runtime.sendMessage({
       command: 'get-project-name',

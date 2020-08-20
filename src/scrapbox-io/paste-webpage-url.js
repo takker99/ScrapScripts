@@ -1,6 +1,6 @@
-const $ = require('jquery')
-const {isChrome, isFirefox} = require('../browser')
-const daiizScrapboxManage = require('./manage')
+import $ from 'jquery'
+import { isChrome, isFirefox } from '../browser'
+import daiizScrapboxManage from './manage'
 const {installed} = daiizScrapboxManage
 
 const keys = {
@@ -67,7 +67,7 @@ const insertTextToScrapboxCursor = text => {
   }
 }
 
-exports.enable = () => {
+export function enable() {
   let c = 0
 
   $(window).on('keydown', event => {

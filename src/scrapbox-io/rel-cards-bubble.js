@@ -1,8 +1,8 @@
-const daiizScrapboxManage = require('./manage')
-const installed = daiizScrapboxManage.installed
-const detectProject = daiizScrapboxManage.detectProject
+import { installed as _installed, detectProject as _detectProject } from './manage'
+const installed = _installed
+const detectProject = _detectProject
 
-exports.enable = function () {
+export function enable () {
   var $appRoot = $('#app-container')
   /* 関連カード */
   var timer = null

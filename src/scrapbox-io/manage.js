@@ -1,10 +1,10 @@
 // Scrapbox
-const $ = require('jquery')
+import $ from 'jquery'
 const ESC_KEY_CODE = 27
 const DAIIZ_GYAZO_TEXT_BUBBLE = 'daiiz-gyazo-text-bubble'
 
 // XXX: 直したい
-exports.installed = function (functionName) {
+export function installed (functionName) {
   var d = `data-${functionName}`
   var defaulfValue = {
     'daiiz-text-bubble': 's', // South
@@ -26,7 +26,7 @@ exports.installed = function (functionName) {
   return false
 }
 
-exports.detectProject = function () {
+export function detectProject () {
   const r = window.location.href.match(/scrapbox\.io\/([^/.]*)/)
     || window.location.href.match(/localhost\:\d+\/([^/.]*)/)
   if (r && r.length >= 2) return encodeURIComponent(r[1])
@@ -40,7 +40,7 @@ var enableDaiizScript = function (pairs) {
   })
 }
 
-exports.install = () => {
+export function install() {
   var mo = new window.MutationObserver(function (mutationRecords) {
     var pairs = {}
     for (var i = 0; i < mutationRecords.length; i++) {
