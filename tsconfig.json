@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib":["ESNext","DOM"],
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop":true,
+        "moduleResolution":"Node",
+        "allowSyntheticDefaultImports":true,
+        "forceConsistentCasingInFileNames":true
+    }
+}

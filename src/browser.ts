@@ -1,8 +1,7 @@
-
-export function isChrome () {
+export function isChrome(): boolean {
     return /Chrome/.test(navigator.userAgent);
 }
 
-export function isFirefox () {
+export function isFirefox(): boolean {
     return /Firefox/.test(navigator.userAgent);
 }

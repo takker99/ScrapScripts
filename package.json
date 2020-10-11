@@ -1,15 +1,15 @@
 {
   "name": "scrap-script",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "repository": "git@github.com:daiiz/ScrapScripts.git",
   "author": "daiiz <da.iz.mg@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "run-s build:**",
+    "build": "webpack",
     "build:babel": "babel client/ --out-dir browser/build/ --minified --source-maps false",
     "build:browserify": "browserify -t [ babelify ] src/index.js -o browser/build/bundle.js -v",
-    "watch": "run-p watch:**",
+    "watch": "webpack -w",
     "watch:babel": "npm run build:babel -- --watch",
     "watch:browserify": "watchify -t [ babelify ] src/index.js -o browser/build/bundle.js -v",
     "zip": "run-s zip:**",
@@ -19,6 +19,7 @@
     "test:standard": "standard --fix src/*.js src/**/*.js"
   },
   "dependencies": {
+    "@progfay/scrapbox-parser": "^6.0.0",
     "@types/jquery": "^3.5.1",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -29,15 +30,21 @@
     "watchify": "^3.9.0"
   },
   "devDependencies": {
+    "@types/copy-webpack-plugin": "^6.0.0",
+    "@types/webpack": "^4.41.21",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
     "ava": "^0.20.0",
-    "standard": "^10.0.2"
-  },
-  "standard": {
-    "global": [
-      "chrome",
-      "window",
-      "document",
-      "$"
-    ]
+    "copy-webpack-plugin": "^6.0.3",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1",
+    "ts-loader": "^8.0.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "webextension-polyfill-ts": "^0.19.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
