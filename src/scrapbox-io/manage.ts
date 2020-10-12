@@ -4,6 +4,11 @@ import {browser} from 'webextension-polyfill-ts';
 const ESC_KEY_CODE = 27;
 const DAIIZ_GYAZO_TEXT_BUBBLE = 'daiiz-gyazo-text-bubble';
 
+export function getCurrentProject() {
+    if ( window.location.href.match(/localhost:\d+\/([^\/.]*)/)) return 'takker';
+    return window.location.href.replace(/scrapbox\.io\/(.*)\//, '$1');
+}
+
 // XXX: 直したい
 export function installed(
     functionName:

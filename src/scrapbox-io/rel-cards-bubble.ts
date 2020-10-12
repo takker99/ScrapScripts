@@ -2,10 +2,10 @@ import { installed } from './manage';
 import $ from 'jquery';
 
 export function enable(): void {
-    const $appRoot = $('#app-container');
+    const appRoot = $('#app-container');
     /* 関連カード */
     let timer: number | undefined = undefined;
-    $appRoot.on('mouseenter', 'a.page-link', (e) => {
+    appRoot.on('mouseenter', 'a.page-link', (e) => {
             const $relationLabels = $('li.relation-label');
             const pos = installed('daiiz-rel-bubble');
             if (pos === false)
@@ -19,7 +19,7 @@ export function enable(): void {
                 return;
             if (!$a.attr('rel') && $a.attr('rel') !== 'route')
                 return;
-            const $bubble = $getRelCardBubble($appRoot);
+            const $bubble = $getRelCardBubble(appRoot);
             const rect = $a[0].getBoundingClientRect();
 
             const pad = 10; // main.cssでの設定値
@@ -59,14 +59,14 @@ export function enable(): void {
         window.clearTimeout(timer);
     });
 
-    $appRoot.on('mouseleave', '#daiiz-rel-cards-bubble', () => {
-        const $bubble = $getRelCardBubble($appRoot);
+    appRoot.on('mouseleave', '#daiiz-rel-cards-bubble', () => {
+        const $bubble = $getRelCardBubble(appRoot);
         window.clearTimeout(timer);
         $bubble.hide();
     });
 
-    $appRoot.on('click', () => {
-            const $bubble = $getRelCardBubble($appRoot);
+    appRoot.on('click', () => {
+            const $bubble = $getRelCardBubble(appRoot);
             window.clearTimeout(timer);
             $bubble.hide();
         });
